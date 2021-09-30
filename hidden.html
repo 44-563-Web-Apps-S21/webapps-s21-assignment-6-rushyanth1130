@@ -1,47 +1,74 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>
-            WebApps Assignment 6 - Javascript
-        </title>
-    </head>
- 
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <title>
+        WebApps Assignment 6 - Javascript
+    </title>
+</head>
+
 <body>
     <h1>
         Hidden things by Nagarushyanth Tummala
     </h1>
 
-<h2>Getting input</h2>
+    <h2>Getting input</h2>
 
-<form>
-    <label for="form1_age">What is your age </label>
-    <input type ="number" id="form1_age" name="form1_age" min=10 max=50 step=2 value=30> <br>
+    <form class="form-group">
+        <label for="form1_secret_word">Enter the secret word </label>
+        <input type="password" id="form1_secret_word" name="form1_secret_word" min=10 max=50 step=2 value="Secret"> <br>
 
-    <label for="form1_nick">What is your nickname </label>
-    <input type ="text" id="form1_nick" name="form1_nick" autofocus> <br>
+        <label for="form1_guess_word">Enter a guess</label>
+        <input type="text" id="form1_guess_word" name="form1_guess_word" autofocus> <br>
 
-    <input type="button" onclick="resolveForm()" value="Get values from form">
-</form>
+        <input type="button" onclick=" processGuess()" value="Check the guess">
+    </form>
 
 
-<p id="result">This text will be replaced </p>
+    <p id="result">This text will be replaced </p>
 
-<script> 
+    <script>
+        correct = 0;
+            wrong = 0;
 
-function resolveForm (){
-    console.log("Getting form values")
-    age = document.getElementById("form1_age").value
-    nick = document.getElementById("form1_nick").value
-    confirmed = confirm("Are these the values? "+age+" and "+nick)
-    
-    out = document.getElementById("result")
-    if(confirmed){
-        out.innerHTML = "Values were confirmed"
-    } else {
-        out.innerHTML = "Values were not confirmed"
-    }
-}
-</script>
+        function processGuess() {
+            
+            console.log("Checking the Guess......")
+            secret_Word = document.getElementById("form1_secret_word").value
+            guess_word = document.getElementById("form1_guess_word").value
+            confirm_guess = confirm("Is this guess word? " + guess_word)
+            result = document.getElementById("result")
+            if (confirm_guess) {
+                if (secret_Word.localeCompare(guess_word) == 0) {
+                    alert("Congratulations.")
+                    correct = correct + 1
+                    result.innerHTML = "Correct guess Count: " + correct + "<br>" +"Wrong guess Count: " + wrong
+                }
+                else
+                {
+                    alert("Sorry")
+                    wrong = wrong + 1
+                    result.innerHTML = "Correct guess Count: " + correct + "<br>" +"Wrong guess Count: " + wrong
+                }
+                
+            } else {
+                alert("Please guess the word again.!!!")
+            }
+        }
+    </script>
 
 </body>
-</html> 
+
+</html>
