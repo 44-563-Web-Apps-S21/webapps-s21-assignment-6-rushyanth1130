@@ -5,6 +5,17 @@
     <title>
         WebApps Assignment 6 - Javascript
     </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -28,32 +39,59 @@
 
     <p id="result">Your guess count will shown here. </p>
 
+    <div class="container" style="height: 200px; width: 200px;">
+        <img class="img-thumbnail" id="script_image" onclick="newImage()" src="tiger.jpeg" alt="Image of Tiger">
+    </div> 
     <script>
+        
+        
         var correct = 0;
         var wrong = 0;
-
         function processPhrase() {
+        console.log("Checking the Guess......")
+        secret_Word = document.getElementById("form1_secret_word").value
+        guess_word = document.getElementById("form1_guess_word").value
+        result = document.getElementById("result")
 
-            console.log("Checking the Guess......")
-            secret_Word = document.getElementById("form1_secret_word").value
-            guess_word = document.getElementById("form1_guess_word").value
-            result = document.getElementById("result")
+        if (secret_Word.localeCompare(guess_word) == 0) {
+        alert("Access allowed")
+        correct = correct + 1
+        result.innerHTML = "Correct guess Count: " + correct + "<br>" + "Wrong guess Count: " + wrong
+        }
+        else {
+        wrong = wrong + 1
+        alert("Access denied")
+        result.innerHTML = "Correct guess Count: " + correct + "<br>" + "Wrong guess Count: " + wrong
+        }
+        }
 
-                if (secret_Word.localeCompare(guess_word) == 0) {
-                    alert("Access allowed")
-                    correct = correct + 1
-                    result.innerHTML = "Correct guess Count: " + correct + "<br>" + "Wrong guess Count: " + wrong
-                }
-                else {
-                    wrong = wrong + 1
-                    alert("Access denied")
-
-                    result.innerHTML = "Correct guess Count: " + correct + "<br>" + "Wrong guess Count: " + wrong
-                }
-
+        var usingImage = 1;
+        function newImage()
+        {
+            var image_src = document.getElementById("script_image");
+            switch(usingImage)
+            {
+                case 1:
+                    {
+                        image_src.src = "lion.jpg";
+                        usingImage = 2;
+                    }                    
+                    break;
+                case 2:
+                    {
+                        image_src.src = "monkey.jpg";
+                        usingImage = 3;
+                    }                    
+                    break;
+                case 3:
+                    {
+                        image_src.src = "tiger.jpeg"
+                        usingImage = 1;
+                    }                    
+                    break;
             }
-
-    </script>
+        }
+        </script>
 
 </body>
 
