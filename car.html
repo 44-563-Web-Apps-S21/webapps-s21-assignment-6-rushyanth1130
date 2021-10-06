@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        WebApps Assignment 6 - Javascript
+    </title>
+</head>
+
+<body>
+
+    <h1>Nagarushyanth Tummala orders a car</h1>
+
+    <form>
+
+        <input type="checkbox" id="electric_1" name="form1_age" min=10 max=50 step=2 value="electric">
+        <label for="form1_age">electric</label><br>
+
+        <input type="checkbox" id="ac_1" name="form1_nick" value="ac">
+        <label for="form1_nick">ac</label><br>
+
+
+        <input type="checkbox" id="gps_1" name="form1_nick" value="gps">
+        <label for="form1_nick">gps</label><br>
+
+        <input type="button" onclick="orderCar()" value="Order a car">
+    </form>
+
+    <p id="result">This text will be replaced </p>
+
+    <form>
+        <label for="form1_age">Enter a property </label>
+        <input type="text" id="color" name="color" min=10 max=50 step=2 value="color"> <br>
+
+        <label for="form1_nick">Enter a value </label>
+        <input type="text" id="value" name="value_1" autofocus> <br>
+
+        <input type="button" onclick="updateCar()" value="Update the car">
+        <p id="result_checkbox">This text will be replaced </p>
+    </form>
+    <script>
+        var my_car = {}
+        function orderCar() {
+
+            var my_car = {}
+            out = document.getElementById("result")
+
+            if (document.getElementById("electric_1").checked)
+                my_car.electric_1 = true
+            else
+                my_car.electric_1 = false
+            out.innerHTML = my_car.electric_1
+
+            if (document.getElementById("ac").checked)
+                my_car.ac = true
+            else
+                my_car.ac = false
+            out.innerHTML = out.innerHTML + "\n" + "AC: " + my_car.ac
+
+            if (document.getElementById("gps").checked)
+                my_car.gps = true
+            else
+                my_car.gps = false
+            out.innerHTML = out.innerHTML + "\n" + "gps: " + my_car.gps
+        }
+        function updateCar() {
+            out = document.getElementById("result_checkbox")
+            color = document.getElementById("color").value
+            value = document.getElementById("value").value
+            my_car[color] = value
+            out.innerHTML = JSON.stringify(my_car)
+
+        }
+    </script>
+
+</body>
+
+</html>
