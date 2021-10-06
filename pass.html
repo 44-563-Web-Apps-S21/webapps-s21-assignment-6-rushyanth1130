@@ -56,15 +56,18 @@
         if (secret_Word.localeCompare(guess_word) == 0) {
         alert("Access allowed")
         correct = correct + 1
-        result.innerHTML = "Correct guess Count: " + correct + "<br>" + "Wrong guess Count: " + wrong
+        result.innerHTML = "Correct guess Count: " 
+        + correct + "<br>" + "Wrong guess Count: " + wrong
         }
         else {
         wrong = wrong + 1
         alert("Access denied")
-        result.innerHTML = "Correct guess Count: " + correct + "<br>" + "Wrong guess Count: " + wrong
+        result.innerHTML = "Correct guess Count: " 
+        + correct + "<br>" + "Wrong guess Count: " + wrong
         }
         }
 
+        
         var usingImage = 1;
         function newImage()
         {
