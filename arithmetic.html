@@ -37,8 +37,39 @@
         <p id="result"></p>
     </div>
 
-    <script>
+    <div class="container">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="pluss" value="plus"
+                onclick="processRadio()">
+            <label class="form-check-label" for="flexRadioDefault1">
+                +
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="minuss" value="minus"
+                onclick="processRadio()">
+            <label class="form-check-label" for="flexRadioDefault2">
+                -
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="timess" value="times"
+                onclick="processRadio()">
+            <label class="form-check-label" for="flexRadioDefault2">
+                *
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="divides" value="divide"
+                onclick="processRadio()">
+            <label class="form-check-label" for="flexRadioDefault2">
+                /
+            </label>
+        </div>
+        <p id="result_radio"></p>
+    </div>
 
+    <script>
         function powers() {
 
             power = 1
@@ -49,10 +80,28 @@
 
             for (i = 1; i <= exponent; i++) {
                 power = power * base_number;
-                result1 = result1 +" "+ power
+                result1 = result1 + " " + power
             }
             console.log(power)
-            out.innerHTML = "The powers of "+base_number+" are: "+result1
+            out.innerHTML = "The powers of " + base_number + " are: " + result1
+        }
+
+        function processRadio() {
+            number1 = document.getElementById("form1_basenumber").value
+            number2 = document.getElementById("form1_exponent").value
+            out = document.getElementById("result_radio")
+            if (document.getElementById("pluss").checked == true) {
+                out.innerHTML = parseInt(number1) + parseInt(number2)
+            }
+            else if (document.getElementById("minuss").checked == true) {
+                out.innerHTML = (number1 - number2)
+            }
+            else if (document.getElementById("timess").checked == true) {
+                out.innerHTML = (number1 * number2)
+            }
+            else if (document.getElementById("divides").checked == true) {
+                out.innerHTML = (number1 / number2)
+            }
         }
     </script>
 
